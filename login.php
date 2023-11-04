@@ -2,22 +2,13 @@
 session_start();
 include "db_conn.php";
 
-if (isset($_POST['name']) && isset($_POST['password'])) {
-    function validate($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-}
-
-$name = validate($_POST['name']);
-$pass = validate($_POST['password']);
+$name = $_POST['name'];
+$pass = $_POST['password'];
 
 if (empty($name)) {
     header("Location: index.php?error=User Name is required");
     exit();
+    
 } else if (empty($pass)) {
     header("Location: index.php?error=Password is required");
     exit();
